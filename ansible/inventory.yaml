@@ -1,0 +1,16 @@
+---
+linux: #Группа хостов 
+  children: #Обозначение, что будет подгруппа хостов
+    nginx: #Имя подгруппы хостов
+      hosts: #Узлы группы
+        nginx-proxy: #Имя машины
+          ansible_host: 89.169.152.151 #Адрес машины
+        nginx-out-1: #Имя машины
+          ansible_host: 89.169.152.66 #Адрес машины
+        nginx-out-2: #Имя машины
+          ansible_host: 51.250.68.69 #Адрес машины            
+  vars: #Переменные, доступные или используемые для всех подгрупп
+    ansible_user: "s7079593"
+    ansible_ssh_private_key_file: ~/.ssh/id_ed25519 
+    connection_protocol: ssh #тип подключения
+    ansible_become: yes #Становиться ли другим пользователем после подключения

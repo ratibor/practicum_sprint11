@@ -1,0 +1,14 @@
+---
+# tasks file for nginx_custom
+
+- name: Установка Nginx 
+  apt:
+    name: "nginx"
+    state: present
+
+- name: Настройка проксирующего nginx
+  ansible.builtin.template:
+    src: index.j2
+    dest: /etc/nginx/sites-available/default
+  when: "'nginx-proxy' in inventory_hostname" # Выполнится только тогда, когда в имени есть nginx-proxy
+  notify: "Nginx Reloader"
